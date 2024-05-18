@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration with Password and Phone Number Validation</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background: url(/static/images/register.jpg) no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* min-height: 100vh; */
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 10px;
+        }
+
+        .flash-messages {
+            background-color: transparent;
+            color: rgb(16, 16, 16);
+            text-align: center;
+            padding: 20px;
+            position: fixed; /* Changed from absolute to fixed */
+            top: 0;
+            font-size: 20px;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 1000;
+        }
+
+        form {
+            max-width: 500px;
+            width: 90%;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 19px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            font-size: 18px;
+            box-sizing: border-box;
+            border: 1px solid #070707;
+            margin: 20px;
+
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin: 0 0 25px 0;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="password"] {
+            width: 96%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #070707;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="password"]:focus {
+            border: 1px solid #007BFF;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            border: none;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 14px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        input:invalid {
+            border: 2px solid rgb(9, 9, 9);
+        }
+
+        input:valid {
+            border: 2px solid green;
+        }
+
+        #password-message {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+        }
+
+        #password-message p {
+            margin: 5px 0;
+        }
+
+        #password-message .valid {
+            color: green;
+        }
+
+        #password-message .invalid {
+            color: red;
+        }
+
+        .invalid-message {
+            color: red;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            form {
+                padding: 20px;
+                font-size: 16px;
+            }
+
+            button {
+                padding: 8px;
+                font-size: 16px;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="tel"],
+            input[type="password"] {
+                padding: 8px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flash-messages">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <form method="POST">
+        <h1>User Registration</h1>
+        <label for="first">First Name</label>
+        <input type="text" name="first" id="first" required>
+
+        <label for="last">Last Name</label>
+        <input type="text" name="last" id="last" required>
+
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" required>
+
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="mobileNumber">Mobile Number</label>
+        <input type="tel" id="mobileNumber" name="phno" pattern="[0-9]{10}" required>
+        <div id="phone-message" class="invalid-message"></div>
+
+        <label for="password">Password</label>
+        <div>
+            <input type="password" name="password" id="password" required>
+            <input type="checkbox" id="showPassword"> Show Password
+        </div>
+        <div id="password-message">
+            <p>Password must meet the following criteria:</p>
+            <ul>
+                <li class="invalid" id="length">8 to 12 characters</li>
+                <li class="invalid" id="lowercase">At least one lowercase letter</li>
+                <li class="invalid" id="uppercase">At least one uppercase letter</li>
+                <li class="invalid" id="number">At least one number</li>
+                <li class="invalid" id="special">At least one special character</li>
+            </ul>
+        </div>
+
+        <button type="submit" id="submit-button" disabled>Submit</button>
+    </form>
+
+    <script>
+        const phoneNumberField = document.getElementById("mobileNumber");
+        const phoneNumberMessage = document.getElementById("phone-message");
+        const phoneNumberPattern = /^[0-9]{10}$/;
+
+        phoneNumberField.addEventListener("input", function () {
+            const phoneNumber = phoneNumberField.value;
+
+            if (phoneNumberPattern.test(phoneNumber)) {
+                phoneNumberMessage.textContent = "";
+                phoneNumberMessage.classList.remove("invalid-message");
+                phoneNumberField.setCustomValidity("");
+            } else {
+                phoneNumberMessage.textContent = "Please enter a 10-digit number.";
+                phoneNumberMessage.classList.add("invalid-message");
+                phoneNumberField.setCustomValidity("Please enter a 10-digit number.");
+            }
+        });
+
+        document.querySelector("form").addEventListener("submit", function (e) {
+            if (!phoneNumberPattern.test(phoneNumberField.value)) {
+                e.preventDefault();
+                phoneNumberMessage.textContent = "Please enter a 10-digit number before submitting.";
+                phoneNumberMessage.classList.add("invalid-message");
+            }
+        });
+
+        const passwordField = document.getElementById("password");
+        const passwordMessage = document.getElementById("password-message");
+        const length = document.getElementById("length");
+        const lowercase = document.getElementById("lowercase");
+        const uppercase = document.getElementById("uppercase");
+        const number = document.getElementById("number");
+        const special = document.getElementById("special");
+        const submitButton = document.getElementById("submit-button");
+        const showPasswordCheckbox = document.getElementById("showPassword");
+
+        passwordField.addEventListener("input", function () {
+            const password = passwordField.value;
+
+            length.classList.toggle("valid", password.length >= 8 && password.length <= 12);
+            lowercase.classList.toggle("valid", /[a-z]/.test(password));
+            uppercase.classList.toggle("valid", /[A-Z]/.test(password));
+            number.classList.toggle("valid", /\d/.test(password));
+            special.classList.toggle("valid", /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(password));
+
+            const validCount = document.querySelectorAll("#password-message .valid").length;
+            const criteriaCount = 5;
+
+            if (validCount === criteriaCount) {
+                passwordMessage.style.display = "none";
+                submitButton.disabled = false;
+            } else {
+                passwordMessage.style.display = "block";
+                submitButton.disabled = true;
+            }
+        });
+
+        showPasswordCheckbox.addEventListener("change", function () {
+            if (showPasswordCheckbox.checked) {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        });
+    </script>
+</body>
+</html>

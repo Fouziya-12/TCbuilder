@@ -1,0 +1,499 @@
+
+mysql> use codegnan
+Database changed
+mysql> create table code(name char(10),age tinyint(2));
+ERROR 1050 (42S01): Table 'code' already exists
+mysql> show tables;
++--------------------+
+| Tables_in_codegnan |
++--------------------+
+| code               |
++--------------------+
+1 row in set (0.01 sec)
+
+mysql> desc code;
++-------+------------+------+-----+---------+-------+
+| Field | Type       | Null | Key | Default | Extra |
++-------+------------+------+-----+---------+-------+
+| name  | char(10)   | YES  |     | NULL    |       |
+| age   | varchar(2) | YES  |     | NULL    |       |
++-------+------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> -- alter commands;
+mysql> /* alter commands */
+mysql> alter table code add column l_name varchar(10);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc code;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | char(10)    | YES  |     | NULL    |       |
+| age    | varchar(2)  | YES  |     | NULL    |       |
+| l_name | varchar(10) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table code column roll_no int first;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'column roll_no int first' at line 1
+mysql> alter table code add column roll_no varchar(10);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc code;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | char(10)    | YES  |     | NULL    |       |
+| age     | varchar(2)  | YES  |     | NULL    |       |
+| l_name  | varchar(10) | YES  |     | NULL    |       |
+| roll_no | varchar(10) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table code add column roll_no int first;
+ERROR 1060 (42S21): Duplicate column name 'roll_no'
+mysql> desc code;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | char(10)    | YES  |     | NULL    |       |
+| age     | varchar(2)  | YES  |     | NULL    |       |
+| l_name  | varchar(10) | YES  |     | NULL    |       |
+| roll_no | varchar(10) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table code add column Roll_no int first;
+ERROR 1060 (42S21): Duplicate column name 'roll_no'
+mysql> alter table code add column address int first;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc code;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| address | int         | YES  |     | NULL    |       |
+| name    | char(10)    | YES  |     | NULL    |       |
+| age     | varchar(2)  | YES  |     | NULL    |       |
+| l_name  | varchar(10) | YES  |     | NULL    |       |
+| roll_no | varchar(10) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> alter table code add addres text after age;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc code;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| address | int         | YES  |     | NULL    |       |
+| name    | char(10)    | YES  |     | NULL    |       |
+| age     | varchar(2)  | YES  |     | NULL    |       |
+| addres  | text        | YES  |     | NULL    |       |
+| l_name  | varchar(10) | YES  |     | NULL    |       |
+| roll_no | varchar(10) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> alter table code modify column name char(50);
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc code;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| address | int         | YES  |     | NULL    |       |
+| name    | char(50)    | YES  |     | NULL    |       |
+| age     | varchar(2)  | YES  |     | NULL    |       |
+| addres  | text        | YES  |     | NULL    |       |
+| l_name  | varchar(10) | YES  |     | NULL    |       |
+| roll_no | varchar(10) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> alter table code modify column age tinyint(2);
+Query OK, 0 rows affected, 1 warning (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> desc code;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| address | int         | YES  |     | NULL    |       |
+| name    | char(50)    | YES  |     | NULL    |       |
+| age     | tinyint     | YES  |     | NULL    |       |
+| addres  | text        | YES  |     | NULL    |       |
+| l_name  | varchar(10) | YES  |     | NULL    |       |
+| roll_no | varchar(10) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> alter table code modify column roll_no int first;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc code;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll_no | int         | YES  |     | NULL    |       |
+| address | int         | YES  |     | NULL    |       |
+| name    | char(50)    | YES  |     | NULL    |       |
+| age     | tinyint     | YES  |     | NULL    |       |
+| addres  | text        | YES  |     | NULL    |       |
+| l_name  | varchar(10) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> alter table code rename column l_name to last_name;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc code;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| roll_no   | int         | YES  |     | NULL    |       |
+| address   | int         | YES  |     | NULL    |       |
+| name      | char(50)    | YES  |     | NULL    |       |
+| age       | tinyint     | YES  |     | NULL    |       |
+| addres    | text        | YES  |     | NULL    |       |
+| last_name | varchar(10) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> alter table code drop column last_name;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table code drop column address;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc
+    -> desc code;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc code' at line 2
+mysql> desc code;
++---------+----------+------+-----+---------+-------+
+| Field   | Type     | Null | Key | Default | Extra |
++---------+----------+------+-----+---------+-------+
+| roll_no | int      | YES  |     | NULL    |       |
+| name    | char(50) | YES  |     | NULL    |       |
+| age     | tinyint  | YES  |     | NULL    |       |
+| addres  | text     | YES  |     | NULL    |       |
++---------+----------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table code rename column addres to address;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc code;
++---------+----------+------+-----+---------+-------+
+| Field   | Type     | Null | Key | Default | Extra |
++---------+----------+------+-----+---------+-------+
+| roll_no | int      | YES  |     | NULL    |       |
+| name    | char(50) | YES  |     | NULL    |       |
+| age     | tinyint  | YES  |     | NULL    |       |
+| address | text     | YES  |     | NULL    |       |
++---------+----------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table code change column address addres varchar(100);
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc code;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| roll_no | int          | YES  |     | NULL    |       |
+| name    | char(50)     | YES  |     | NULL    |       |
+| age     | tinyint      | YES  |     | NULL    |       |
+| addres  | varchar(100) | YES  |     | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> drop table code;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc code;
+ERROR 1146 (42S02): Table 'codegnan.code' doesn't exist
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> create table student(name varchar(25),l_name varchar(30),age int,address varchar(100));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc student;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| name    | varchar(25)  | YES  |     | NULL    |       |
+| l_name  | varchar(30)  | YES  |     | NULL    |       |
+| age     | int          | YES  |     | NULL    |       |
+| address | varchar(100) | YES  |     | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into student(name,l_name,age,address) values(rehaan,khan,25,xyz colony);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'colony)' at line 1
+mysql> insert into student(name,l_name,age,address) values('rehaan','khan',25,'xyz colony');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> select * from student;
++--------+--------+------+------------+
+| name   | l_name | age  | address    |
++--------+--------+------+------------+
+| rehaan | khan   |   25 | xyz colony |
++--------+--------+------+------------+
+1 row in set (0.00 sec)
+
+mysql> insert into student values('armaan','qureshi',26,'pqr colony');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from student;
++--------+---------+------+------------+
+| name   | l_name  | age  | address    |
++--------+---------+------+------------+
+| rehaan | khan    |   25 | xyz colony |
+| armaan | qureshi |   26 | pqr colony |
++--------+---------+------+------------+
+2 rows in set (0.00 sec)
+
+mysql> insert into student(name,l_name,age) values('shafiya','shaik',20,);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> insert into student(name,l_name,age) values('shafiya','shaik',20);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++---------+---------+------+------------+
+| name    | l_name  | age  | address    |
++---------+---------+------+------------+
+| rehaan  | khan    |   25 | xyz colony |
+| armaan  | qureshi |   26 | pqr colony |
+| shafiya | shaik   |   20 | NULL       |
++---------+---------+------+------------+
+3 rows in set (0.00 sec)
+
+mysql> insert into student values('rama','hari',26,'pqr colony');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from student;
++---------+---------+------+------------+
+| name    | l_name  | age  | address    |
++---------+---------+------+------------+
+| rehaan  | khan    |   25 | xyz colony |
+| armaan  | qureshi |   26 | pqr colony |
+| shafiya | shaik   |   20 | NULL       |
+| rama    | hari    |   26 | pqr colony |
++---------+---------+------+------------+
+4 rows in set (0.00 sec)
+
+mysql> insert into student values('rama','hari',20);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> select * from student;
++---------+---------+------+------------+
+| name    | l_name  | age  | address    |
++---------+---------+------+------------+
+| rehaan  | khan    |   25 | xyz colony |
+| armaan  | qureshi |   26 | pqr colony |
+| shafiya | shaik   |   20 | NULL       |
+| rama    | hari    |   26 | pqr colony |
++---------+---------+------+------------+
+4 rows in set (0.00 sec)
+
+mysql> create table college(name varchar(20) not null,place varchar(25));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc college;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| name  | varchar(20) | NO   |     | NULL    |       |
+| place | varchar(25) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into student values('vijayawada');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into student(name,place) values('vijayawada');
+ERROR 1054 (42S22): Unknown column 'place' in 'field list'
+mysql> insert into college(name,place) values('vijayawada');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> drop table college;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table college(name varchar(20) default 'nan');
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> insert into college values('vijayawada');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into college values();
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++---------+---------+------+------------+
+| name    | l_name  | age  | address    |
++---------+---------+------+------------+
+| rehaan  | khan    |   25 | xyz colony |
+| armaan  | qureshi |   26 | pqr colony |
+| shafiya | shaik   |   20 | NULL       |
+| rama    | hari    |   26 | pqr colony |
++---------+---------+------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from college;
++------------+
+| name       |
++------------+
+| vijayawada |
+| nan        |
++------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from student;
++---------+---------+------+------------+
+| name    | l_name  | age  | address    |
++---------+---------+------+------------+
+| rehaan  | khan    |   25 | xyz colony |
+| armaan  | qureshi |   26 | pqr colony |
+| shafiya | shaik   |   20 | NULL       |
+| rama    | hari    |   26 | pqr colony |
++---------+---------+------+------------+
+4 rows in set (0.00 sec)
+
+mysql> truncate table student;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select * from student;
+Empty set (0.00 sec)
+
+mysql> insert into student values('rama','hari',20,'bcolony');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into student(name,l_name,age) values('shafiya','shaik',20);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into student values('armaan','qureshi',26,'pqr colony');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into student(name,l_name,age,address) values('rehaan','khan',25,'xyz colony');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++---------+---------+------+------------+
+| name    | l_name  | age  | address    |
++---------+---------+------+------------+
+| rama    | hari    |   20 | bcolony    |
+| shafiya | shaik   |   20 | NULL       |
+| armaan  | qureshi |   26 | pqr colony |
+| rehaan  | khan    |   25 | xyz colony |
++---------+---------+------+------------+
+4 rows in set (0.00 sec)
+
+mysql> delete from student;
+Query OK, 4 rows affected (0.01 sec)
+
+mysql> select * from student;
+Empty set (0.00 sec)
+
+mysql> insert into student(name,l_name,age,address) values('rehaan','khan',25,'xyz colony');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into student values('armaan','qureshi',26,'pqr colony');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into student(name,l_name,age) values('shafiya','shaik',20,'rose colony');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into student(name,l_name,age,address) values('shafiya','shaik',20,'rose colony');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++---------+---------+------+-------------+
+| name    | l_name  | age  | address     |
++---------+---------+------+-------------+
+| rehaan  | khan    |   25 | xyz colony  |
+| armaan  | qureshi |   26 | pqr colony  |
+| shafiya | shaik   |   20 | rose colony |
++---------+---------+------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> delete from student where age=20;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++--------+---------+------+------------+
+| name   | l_name  | age  | address    |
++--------+---------+------+------------+
+| rehaan | khan    |   25 | xyz colony |
+| armaan | qureshi |   26 | pqr colony |
++--------+---------+------+------------+
+2 rows in set (0.00 sec)
+
+mysql> create database destination;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select database();
++------------+
+| database() |
++------------+
+| codegnan   |
++------------+
+1 row in set (0.00 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_codegnan |
++--------------------+
+| college            |
+| student            |
++--------------------+
+2 rows in set (0.00 sec)
+
+mysql> rename table codegnan.student to destination.student;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> rename table codegnan.student to destination.stud;
+ERROR 1146 (42S02): Table 'codegnan.student' doesn't exist
+mysql> show tables
+    -> ;
++--------------------+
+| Tables_in_codegnan |
++--------------------+
+| college            |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> use student;
+ERROR 1049 (42000): Unknown database 'student'
+mysql> use destination;
+Database changed
+mysql> use student;
+ERROR 1049 (42000): Unknown database 'student'
+mysql> show tables;
++-----------------------+
+| Tables_in_destination |
++-----------------------+
+| student               |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> desc student;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| name    | varchar(25)  | YES  |     | NULL    |       |
+| l_name  | varchar(30)  | YES  |     | NULL    |       |
+| age     | int          | YES  |     | NULL    |       |
+| address | varchar(100) | YES  |     | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)

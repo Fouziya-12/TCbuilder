@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.pinimg.com/564x/34/13/66/34136696f76fa833f3342c60ca94d18b.jpg'); 
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background-color: #333;
+            padding: 10px 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: #f1f1f1;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: #333;
+        }
+
+        .content {
+            padding: 20px;
+            margin-top: 70px;
+            color: #000;
+        }
+
+        .logout {
+            margin-left: auto;
+        }
+
+        .table-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+        }
+
+        th, td {
+            text-align: center;
+        }
+
+        .btn-custom {
+            background-color: rgb(249, 10, 10);
+            color: #f9f6f6;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 767px) {
+            .navbar a {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="{{ url_for('update_profile') }}">Update Profile</a>
+    <a href="{{ url_for('submit_documents') }}">Submit Documents</a>
+    <a href="{{ url_for('apply_download_tc') }}">Apply & Download TC</a>
+    <a href="{{ url_for('userlogout') }}" class="btn-custom logout">Logout</a>
+</nav>
+
+<div class="content container-fluid">
+    <h2>Welcome to User Dashboard</h2>
+    <div class="table-container mt-4">
+        {% if new %}
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                        <th>Email ID</th>
+                        <th>Phone Number</th>
+                        <th>Password</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ new[0] }}</td>
+                        <td>{{ new[1] }}</td>
+                        <td>{{ new[2] }}</td>
+                        <td>{{ new[3] }}</td>
+                        <td>{{ new[4] }}</td>
+                        <td>{{ new[5] }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        {% else %}
+            <p>No user data found.</p>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

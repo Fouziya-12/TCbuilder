@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    body {
+      min-height: 100vh;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    nav {
+      height: 15vh;
+      background-color: rgb(150, 204, 238);
+      box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+    }
+    nav ul {
+      width: 100%;
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    nav li {
+      height: 80px;
+    }
+    nav a {
+      height: 100%;
+      padding: 0 30px;
+      text-decoration: none;
+      display: flex;
+      font-weight: 800;
+      font-size: 25px;
+      align-items: center;
+      color: black;
+      margin-top: 15px;
+    }
+    nav a:hover {
+      background-color: #fff8f8;
+    }
+    nav li:first-child {
+      margin-right: auto;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 250px;
+      background-color: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      box-shadow: -10px 0 10px rgba(7, 7, 7, 0.1);
+      list-style: none;
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+    .sidebar li {
+      width: 100%;
+    }
+    .sidebar a {
+      width: 100%;
+    }
+    .menu-button {
+      display: none;  
+    }
+    .right-box {
+      width: 90%;
+      max-width: 300px;
+      padding: 20px;
+      background-color: rgb(16, 16, 16);
+      box-shadow: 0 0 10px white;
+      border-radius: 10px;
+      overflow: auto;
+      max-height: 300px; 
+      margin: 20px auto;
+     position: absolute;
+      margin-top: 0px;
+      margin-bottom: 10px;
+      margin-right: 30px;
+    }
+    .right-box label {
+      font-size: 20px;
+      color: #e4e4e4;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .home {
+      background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.4)),url("/static/images/home.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .home h1 {
+      padding: 40px 12px;
+      color: #fff;
+      font-size: 55px;
+    }
+    .about {
+      background: rgb(241, 252, 252);
+      text-align: justify;
+    }
+    .about h1 {
+      padding: 40px 10px;
+      text-align: center;
+      font-size: 35px;
+      font-weight: 500;
+      margin-bottom: 30px;
+    }
+    .about .info {
+      font-size: 25px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-weight: 400;
+      margin: 10px;
+      margin-top: -28px;
+    }
+    .about .info p {
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    .about h1:hover {
+      text-decoration: underline;
+      color: #282727;
+      cursor: pointer;
+    }
+    .services {
+      background: rgb(241, 252, 252);
+      width: 100%;
+      text-align: justify;
+    }
+    .services h1 {
+      padding: 15px 10px;
+      text-align: center;
+      font-size: 35px;
+      font-weight: 500;
+    }
+    .services .info {
+      font-size: 25px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-weight: 400;
+      margin: 10px;
+    }
+    .services .info p {
+      text-align: justify;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    .services h1:hover {
+      text-decoration: underline;
+      color: #282727;
+      cursor: pointer;
+    }
+    .logo img {
+      width: 10vw;
+      height: 9vh;
+      padding: 1px 0px;
+      display: flex;
+    }
+    .map {
+      width: 100%;
+      padding: 100px 70px;
+      background-color: #020202;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      overflow: auto;
+      max-height: 900px;
+      margin-top: 300px;
+      margin-bottom: 100px;
+    }
+    .new {
+      margin-left: auto;
+    }
+    .news {
+      margin-left: 10%;
+      display: flex;
+      align-content: space-between;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    .news li {
+      list-style: none;
+      width: 200px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .news img {
+      width: 100%;
+      height: 150px; /* Adjust height as needed */
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+    .news img {
+      width: 100%;
+      height: 150px; /* Adjust height as needed */
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+
+  .steps h1{
+  padding: 30px 10px;
+  text-align: center;
+  font-size: 35px;
+  font-weight: 500;
+}
+.steps h1:hover{
+  text-decoration: underline;
+  color: #282727;
+  cursor: pointer;
+}
+.steps-row{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.steps-col{
+    width: 20vw;
+    height: 14rem;
+    color: var(--clr4);
+    background-color: rgb(232, 229, 229);
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+    flex: 1 1 25rem;
+    padding: 1.2rem;
+    margin: 1rem;    /*photo size */
+    box-shadow: 0 .2rem .5rem rgb(89, 89, 91);
+}
+.steps-col:hover{
+    transition: .5s ease;
+    transform:scale(0.9);
+}
+.steps-col.register{
+  background-image: url("https://t4.ftcdn.net/jpg/05/98/79/31/360_F_598793121_ZJwUp1XCfV4jd1r4QYjOeTylEH5OaDVa.jpg");
+}
+.steps-col.login{
+  background-image: url("https://img.freepik.com/free-vector/login-concept-illustration_114360-739.jpg");
+}
+.steps-col.edit{
+  background-image: url("https://img.lovepik.com/element/45006/9431.png_860.png");
+}
+.steps-col.Application{
+  background-image: url("https://www.rankedcollege.com/wp-content/uploads/2022/07/Blue-Brown-3D-Illustrated-Social-Media-Marketing-Blog-Banner-21-1-1.jpg");
+}
+.steps-col.payment{
+  background-image: url("https://www.pngarts.com/files/7/Payment-PNG-Free-Download.png");
+}
+.steps-col.Approved{
+  background-image: url("https://as2.ftcdn.net/v2/jpg/01/78/15/87/1000_F_178158717_vDYsmmERktyf2wP2UvD4qB59VPH2JKe5.jpg");
+}
+
+.steps-col h2{
+    padding: 1rem 0;
+    font-size: 2i9rem;
+    font-weight: 1500;
+    color: #070707;
+}
+.stepss-col p{
+    font-size:15px;
+    font-weight:300;
+    color:rgb(19, 19, 19);
+}
+
+
+
+
+
+
+
+
+
+    @media(max-width: 800px) {
+      .hideOnMobile {
+        display: none;
+      }
+      .menu-button {
+        display: block;
+      }
+      .news {
+        margin-left: 0;
+        justify-content: center;
+      }
+      .news li {
+        margin: 10px;
+      }
+    }
+    @media(max-width: 400px) {
+      .sidebar {
+        width: 100%;
+      }
+      .news li {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul class="sidebar">
+      <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Register</a></li>
+      <li><a href="#">Login</a></li>
+    </ul>
+    <ul>
+      <li class="logo"><a href="#"><img src="/static/images/logo.png" alt=""></a></li>
+      <li class="hideOnMobile"><a href="#home">Home</a></li>
+      <li class="hideOnMobile"><a href="#about">About</a></li>
+      <!-- <li class="hideOnMobile"><a href="#steps">Steps</a></li> -->
+      <li class="hideOnMobile"><a href="{{url_for('user')}}">Register</a></li>
+      <li class="hideOnMobile"><a href="{{url_for('userlogin')}}">Login</a></li>
+      <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+    </ul>
+  </nav>
+
+  <script>
+    function showSidebar() {
+      const sidebar = document.querySelector('.sidebar');
+      sidebar.style.display = 'flex';
+    }
+    function hideSidebar() {
+      const sidebar = document.querySelector('.sidebar');
+      sidebar.style.display = 'none';
+    }
+  </script>
+
+                  <!-- HOME -->
+
+
+  <section id="home" class="home">
+    <form action="#"></form>
+    <marquee scrollamount="15" direction="left"><h1>Online Transfer Certificate Builder</h1></marquee>
+    
+  <div class="right-box">
+    <label>Latest Notifications</label>
+    <div style="color: white;">
+      {% for new in data %}
+      <p>{{ new[0] }}</p>
+      {% endfor %}
+    </div>
+  </div>
+  </section><br><br>
+
+
+  <!-- About -->
+  <br>
+  <section id="about" class="about">
+    <div class="title">
+      <h1><span>About</span></h1>
+    </div>
+    <div class="info">
+      <p>
+        Online Transfer Certificate is your one-stop solution for obtaining transfer certificates conveniently and efficiently, 
+        right from the comfort of your home. We understand the challenges of managing paperwork, especially when it comes to transferring 
+        schools or applying for higher education. That's why we've developed a seamless online platform to streamline the process and make 
+        it hassle-free for students, parents, and educational institutions. Our platform allows you to request, process, and receive your 
+        transfer certificate entirely online, eliminating the need for tedious paperwork and long wait times. With just a few clicks, you 
+        can initiate the transfer certificate process and track its status in real-time. At Online Transfer Certificate, we prioritize 
+        security and accuracy. Our platform is built with robust security measures to protect your personal information, and our team 
+        works diligently to ensure that your transfer certificate is processed promptly and accurately. Whether you're a student 
+        transitioning to a new school, a parent managing your child's educational records, or an educational institution handling student 
+        transfers, Online Transfer Certificate is here to make the process quick, easy, and stress-free. Here are five steps to get an online transfer certificate.
+        This accuracy is crucial for various purposes, including admission to new institutions or employment verification.
+        Additionally, the adoption of online TCs results in cost savings for educational institutions, as it eliminates expenses related to
+         printing, storage, and distribution of paper certificates. Furthermore, the transition to digital certificates enhances efficiency 
+         by reducing processing times, benefiting both students and educational institutions. Faster processing ensures that students receive 
+         their certificates promptly, while institutions experience improved workflow efficiency and reduced administrative burdens. Moreover,
+          online TCs contribute to environmental sustainability by reducing paper usage, and they also offer enhanced security features, such
+           as encryption and password protection, ensuring the confidentiality of student information.
+        <br><br>
+      </p>
+    </div>
+  </section>
+  <br><br>
+
+  <section class="steps" id="steps">
+    <div class="title">
+      <h1><span>Steps</span></h1>
+    </div>
+    <div class="steps-row">
+      <div class="steps-col register">
+      
+        <h2>Register</h2>
+        <!-- <p>vgddcc nidihgrhgb jgbghfbd khjhghr dfwf3cge tvdegf</p> -->
+      </div>
+      <div class="steps-col login">
+        <h2>Login</h2>
+        <!-- <p>vgddcc nidihgrhgb jgbghfbd khjhghr dfwf3cge tvdegf</p> -->
+      </div>
+      <div class="steps-col edit">
+        <h2>Edit Profile</h2>
+        <!-- <p>vgddcc nidihgrhgb jgbghfbd khjhghr dfwf3cge tvdegf</p> -->
+      </div>
+      <div class="steps-col Application">
+        <h2>Apply</h2>
+        <!-- <p>vgddcc nidihgrhgb jgbghfbd khjhghr dfwf3cge tvdegf</p> -->
+      </div>
+      <div class="steps-col payment">
+        <h2>Payment</h2>
+        <!-- <p>vgddcc nidihgrhgb jgbghfbd khjhghr dfwf3cge tvdegf</p> -->
+      </div>
+      <div class="steps-col Approved">
+        <h2>Approved</h2>
+        <!-- <p>vgddcc nidihgrhgb jgbghfbd khjhghr dfwf3cge tvdegf</p> -->
+      </div>
+      
+    </div>
+  </section><br>
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <h1 style="margin-top: -10px;">Steps:</h1>
+  <ol class="news">
+    <li>
+      <img src="https://vakilsearch.com/blog/wp-content/uploads/2022/04/shutterstock_761462098-scaled.jpg" alt="Step 1 Image">
+      <br> Register
+    </li>
+    <li>
+      <img src="https://cdn-icons-png.flaticon.com/512/5509/5509636.png" alt="Step 2 Image">
+      <br> Login
+    </li>
+    <li>
+      <img src="https://www.rankedcollege.com/wp-content/uploads/2022/07/Blue-Brown-3D-Illustrated-Social-Media-Marketing-Blog-Banner-21-1-1.jpg" alt="Step 3 Image">
+      <br> Apply
+    </li>
+    <li>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1SVISlUwGM7W6wxxpStgVJtmPHiqsAUFPrSBhGMTNQA&s" alt="Step 4 Image">
+      <br> Payment
+    </li>
+    <li>
+      <img src="https://qph.cf2.quoracdn.net/main-qimg-2b1903b6512cc26304a22ac1053896c3-lq" alt="Step 5 Image">
+      <br> Approved
+    </li>
+  </ol>
+  <br><br> -->
+
+  <!-- Services
+  <section id="services" class="services">
+    <div class="title">
+      <h1><span>Services</span></h1>
+    </div>
+    <div class="info">
+      <p>
+        Online transfer certificate service understands that transferring to a new institution or organization can be a 
+        significant step, and we're here to assist you throughout the process. Our online transfer certificate service enables you
+        to request and receive your transfer certificate conveniently from anywhere, at any time. Whether you're transferring to another 
+        educational institution, joining a new workplace, or for any other purpose, we've streamlined the process to make it as smooth as possible.
+        Here are some features:</p>
+        <br><br>
+        <strong>Convenience:</strong> Request your transfer certificate from the comfort of your home or anywhere with internet access.
+        <br><br>
+        <strong>Efficiency:</strong> Receive your transfer certificate quickly without the need for in-person visits or paperwork.
+        <br><br>
+        <strong>Security:</strong> Your information is kept confidential and secure throughout the process.
+        <br><br>
+        <strong>Customization:</strong> Specify any additional requirements or special instructions for your
+        transfer certificate.
+        <br><br>
+        <strong>How It Works:</strong>
+        <br><br>
+        <em>Request Submission:</em> Fill out our online request form with your details and the purpose of the transfer certificate.
+        <br><br>
+        <em>Processing:</em> Our administration team will review your request and process it within a specified timeframe.
+        <br><br>
+        <em>Certificate Issuance:</em> Once processed, your transfer certificate will be issued in your preferred format and delivered to you via email, online portal, or other preferred methods.
+        <br><br>
+        <strong>Request Form:</strong>
+        <br>
+        Name:
+        <br>
+        Student DOB:
+        <br>
+        Course:
+        <br>
+        Duration of Study:
+        <br>
+        Reason for Request:
+        <br>
+        Preferred Format (PDF/Digital Copy/Other):
+        <br><br>
+        <strong>Contact Information:</strong>
+        <br>
+        Email:
+        <br>
+        Phone Number:
+        <br><br>
+        <strong>Fees (if applicable):</strong> Please note that a processing fee may apply for this service. Payment can be made securely through our online payment portal.
+      </p><br><br>
+    </div>
+  </section> -->
+
+
+</body>
+</html>
+
+
+     

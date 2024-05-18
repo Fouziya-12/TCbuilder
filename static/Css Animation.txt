@@ -1,0 +1,138 @@
+Css Animation:
+
+1.an animation lets an elements gradually change from one style to another.
+2.You can change as many CSS properties you want,as many times as you want.
+3.To use css animation,you must first specify some keyframe for the animation.
+4.keyframe hold what style the element will have at certain times.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+To learn about CSS animation you want follow the below properties:
+
+@keyframes
+animation-name
+animation-duration
+animation-delay
+animation-iteration-count
+animation-direction
+animation-timing-function
+animation-fill-mode
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1)@keyframes Rules
+
+*When you specify CSS styles inside the @keyframe rule,the animation will gradually change from the current style to the new style at certain times.
+*To get an animation to work,you must bind the animation to an element.
+_______________________________________________________________-
+2)animation-name:
+
+To start the animation intially we want to declare a value in animation-name.
+
+______________________________________________________________
+3)animation-delay:
+
+theanimation-delay property specifies a delay for the start of an animation.
+_______________________________________________________________________
+
+4)animation-iteration-count:
+
+The animation-iteration-count property specifies the number of times an animation should run
+_____________________________________________________________________
+
+5)animation-direction:
+
+The animation-direction specifies whether an animation should be palyed forwords or in alternate cycle:
+
+
+The animation-direction property can have the following value:
+
+*normal-The animation is played as normal(forward).This is default.
+*reverse-The animation is palyed forward first,then backwards.
+*alternate-The animation is played forwads first,then backward.
+*alternate-reverse-The animation is played backward first,then forward.
+_______________________________________________________________________________________
+
+6)animation-timing-function:
+
+The animation-timing-function property specifies the speed curve of the animation.
+
+The animation-timing-function property can have the following values:
+
+*ease-Specifies an animation with a slow start,then fast start to end.
+*linear-Specifies an animation with the same speed from start to end
+*ease-in-specifies an animation with a slow start
+*ease-out-specifies an animation with a slow end
+*ease-in-out-Specifies an animation with a slow start and end
+_______________________________________________________________________________________
+
+7)animation-fill-mode:
+
+The animation-fill-mode property specify a style for the target element when the animation is not playing(before it start,after it ends,or both)
+
+*none-Default value.Animation will not apply any style to the element before or after it is ecxecuting
+*forwards-The element will retain the style values that is set by the last keyframe(depends on animation-direction and animation-iteration-cout)
+*backward-The element will get the style values that is set by the fisrt keyframe(depends on animation-direction),and retain this during the animation-delay period.
+*both-The animation will follow the rules for both forwads and backwards,extending the an9imation properties in both directions.
+___________________________________________________________________________________________
+
+
+CSS DISPLAY
+
+The display property specifies if/how an element is displayed.
+
+*Every HTML element has a default dispaly value depending on what type of element it is.The default display value for most element is block or inline.
+
+Syntax:
+
+display:none;
+display:inline;
+display:block;
+display:inline-block;
+
+ 
+echo "# signUp" >> README .md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git push -u origin main
+____________________________________________________________________________________________________________________________________________________________________________________________
+
+Flex Container :
+
+*The flex direction specifies the direction in which the flex items should be arranged within the flex container.
+*For defining the direction we will flex-row or flex-column after 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

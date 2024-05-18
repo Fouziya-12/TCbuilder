@@ -1,0 +1,131 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Area Example</title>
+    <style>
+        Style for the text area
+        textarea {
+            width: 60%;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
+    </style>
+                {% with messages = get_flashed_messages() %}
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            {% endwith %}
+</head>
+<div class="flash-messages">
+        <ul class="flashes">
+            {% with messages = get_flashed_messages() %}
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            {% endwith %}
+        </ul>
+    </div>
+<body>
+    <form method="POST">
+notification
+<label>Notifications</label>
+        <textarea name="text" id="text"></textarea>
+        <button>submit</button>
+    </form>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Area Example</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background:url(/static/images/doc.jpg);
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        form {
+            margin: 20px auto;
+            width: 60%;
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-size: 22px;
+            font-weight: bold;
+        }
+        textarea {
+            width: 97%;
+            height: 150px;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            /* font-family: Arial, sans-serif; */
+            font-size: 16px;
+            resize: vertical;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 17px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .flash-messages {
+            margin-top: 100px;
+            text-align: center;
+        }
+        .flashes {
+            list-style-type: none;
+            padding: 0;
+        }
+        .flashes li {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="flash-messages">
+        <ul class="flashes">
+            {% with messages = get_flashed_messages() %}
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            {% endwith %}
+        </ul>
+    </div>
+    <form method="POST">
+        <label for="text">Notification</label>
+        <textarea name="text" id="text" placeholder="Enter your notification here..."></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+

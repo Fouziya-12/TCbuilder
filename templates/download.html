@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer Certificate</title>
+    <style>
+        /* Styles for the TC container */
+        .tc-container {
+            background-color: rgb(215, 255, 215);
+            max-width: 800px;
+            height: 120vh;
+            margin: 0 auto;
+            padding: 20px;
+            border: 3px solid #000;
+            font-family: Arial, sans-serif; /* Add a font-family for better readability */
+        }
+
+        /* TC heading styles */
+        h1 {
+            margin-bottom:50px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 40px;
+        }
+
+        /* Label styles */
+        label {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: right; /* Align labels to the right */
+        }
+
+        /* Information styles */
+        .info {
+            margin-left: 120px; /* Increase margin for better spacing */
+        }
+
+        /* Administrator Stamp styles */
+        .stamp {
+            float: right;
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 20px;
+            margin-right: 30px;
+        }
+        /* .stamp img {
+           height: 10vh;
+        } */
+
+        /* Principal styles */
+        .principal {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 25px;
+        }
+        @media (max-width: 600px) {
+    .tc-container {
+        padding: 10px;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    label {
+        font-size: 0.9rem;
+    }
+    .stamp {
+        font-size: 1rem;
+    }
+    .principal {
+        font-size: 1.2rem;
+    }
+}
+        
+    </style>
+                <!-- {% with messages = get_flashed_messages() %}
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            {% endwith %} -->
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<body>
+    <div class="tc-container">
+        <h1>Transfer Certificate</h1>
+
+        <div class="info">
+            <label>Student Name:</label> {{new[0]}}<br><br>
+            <label>Date of Birth:</label> {{new[4]}}<br><br>
+            <label>Gender:</label> {{new[1]}}<br><br>
+            <label>Father's Name:</label> {{new[2]}}<br><br>
+            <label>Mother's Name:</label> {{new[3]}}<br><br>
+            <label>Nationality:</label> {{new[5]}}<br><br>
+            <label>Belongs to SC/ST/OBC:</label> {{new[6]}}<br><br>
+            <label>Date of Admission:</label> {{new[7]}}<br><br>
+            <label>Class/Course Enrolled:</label> {{new[8]}}<br><br>
+            <label>Academic Year From:</label> {{new[9]}}<br><br>
+            <label>Academic Year To:</label> {{new[10]}}<br><br>
+            <label>Qualified for Promotion:</label> {{new[11]}}<br><br>
+            <label>Dues Paid:</label> {{new[12]}}<br><br>
+            <label>General Conduct:</label> {{new[13]}}<br><br>
+            <label>Date of Issue (DD/MM/YY):</label> {{new[14]}}<br><br>
+            <label>Reason for Leaving:</label> {{new[15]}}<br><br>
+            <label>Remarks:</label> {{new[16]}}<br><br>
+        </div>
+
+        <div class="stamp">
+            Administrator Stamp
+        </div>
+
+        <div class="principal">
+            Principal
+        </div>
+    </div>
+</body>
+</html>
